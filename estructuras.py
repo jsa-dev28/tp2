@@ -71,7 +71,6 @@ class ListaEnlazada:
             actual = actual.siguiente
 
 class QueueCentroPokemon:
-
     def __init__(self):
         self._queue = deque()
 

@@ -14,7 +14,6 @@ GIMNASIOS = [
 
 LIMITE_EQUIPO = 6
 
-
 class Entrenador:
     def __init__(self, registro_medallas):
         self.equipo_principal = []

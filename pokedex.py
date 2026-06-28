@@ -29,7 +29,6 @@ class Pokedex:
             self.registro[pkm.id] = pkm
 
     def obtener(self, id_pokemon: int):
-        """Acceso O(1) promedio gracias al Hash Map."""
         return self.registro.get(id_pokemon)
 
     def existe(self, id_pokemon: int) -> bool:
@@ -65,7 +64,7 @@ class RegistroMedallas:
 
     def agregar_medalla(self, nombre_medalla: str) -> bool:
         if nombre_medalla in self.medallas:
-            print(f">> Ya posees la '{nombre_medalla}'. No se admiten duplicados (Hash Set).")
+            print(f">> Ya posees la '{nombre_medalla}'. No se admiten duplicados.")
             return False
         self.medallas.add(nombre_medalla)
         print(f">> ¡Has obtenido la {nombre_medalla}!")
@@ -74,7 +73,7 @@ class RegistroMedallas:
     def mostrar(self):
         print("\n===== MEDALLAS OBTENIDAS =====")
         if not self.medallas:
-            print("Aun no tienes medallas.")
+            print("Aun no tenes medallas.")
         for m in self.medallas:
             print(f"- {m}")
         print(f"Progreso: {len(self.medallas)}/{len(self.medallas_totales)}")
