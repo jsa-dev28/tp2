@@ -20,7 +20,7 @@ class Pokemon:
         return "/".join(self.tipo)
 
     def __repr__(self):
-        return (f"#{self.id:03d} {self.nombre} ({self.tipo_str}) "
+        return (f"#{self.id} {self.nombre} ({self.tipo_str}) "
                 f"Nv.{self.nivel} - PC:{self.poder_combate} "
                 f"(HP:{self.hp} ATK:{self.ataque} DEF:{self.defensa} VEL:{self.velocidad})")
 
