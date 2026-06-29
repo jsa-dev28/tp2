@@ -1,5 +1,5 @@
 import random
-from estructuras import ListaEnlazada, QueueCentroPokemon, StackTransferencias
+from estructuras import LinkedList, QueueCentroPokemon, StackTransferencias
 
 GIMNASIOS = [
     {"nombre": "Ciudad Plateada", "lider": "Brock", "medalla": "Medalla Roca"},
@@ -17,7 +17,7 @@ LIMITE_EQUIPO = 6
 class Entrenador:
     def __init__(self, registro_medallas):
         self.equipo_principal = []
-        self.pc = ListaEnlazada()
+        self.pc = LinkedList()
         self.centro_pokemon = QueueCentroPokemon()
         self.pila_transferencias = StackTransferencias()
         self.medallas = registro_medallas

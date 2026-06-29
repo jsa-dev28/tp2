@@ -27,7 +27,7 @@ class Pokemon:
     def __str__(self):
         return self.__repr__()
 
-    def to_dict(self):
+    def dict(self):
         return {
             "id": self.id,
             "nombre": self.nombre,

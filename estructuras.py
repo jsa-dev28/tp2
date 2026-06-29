@@ -7,10 +7,10 @@ class Nodo:
         self.siguiente = None
 
 
-class ListaEnlazada:
+class LinkedList:
     def __init__(self):
         self.cabeza = None
-        self.tamano = 0
+        self.tamaño = 0
 
     def insertar_al_final(self, dato):
         nuevo = Nodo(dato)
@@ -21,13 +21,13 @@ class ListaEnlazada:
             while actual.siguiente is not None:
                 actual = actual.siguiente
             actual.siguiente = nuevo
-        self.tamano += 1
+        self.tamaño += 1
 
     def insertar_al_inicio(self, dato):
         nuevo = Nodo(dato)
         nuevo.siguiente = self.cabeza
         self.cabeza = nuevo
-        self.tamano += 1
+        self.tamaño += 1
 
     def eliminar(self, pokemon):
         actual = self.cabeza
@@ -38,7 +38,7 @@ class ListaEnlazada:
                     self.cabeza = actual.siguiente
                 else:
                     previo.siguiente = actual.siguiente
-                self.tamano -= 1
+                self.tamaño -= 1
                 return True
             previo = actual
             actual = actual.siguiente
@@ -54,7 +54,7 @@ class ListaEnlazada:
 
     def reconstruir_desde_lista(self, lista_python):
         self.cabeza = None
-        self.tamano = 0
+        self.tamaño = 0
         for dato in lista_python:
             self.insertar_al_final(dato)
 
@@ -62,7 +62,7 @@ class ListaEnlazada:
         return self.cabeza is None
 
     def __len__(self):
-        return self.tamano
+        return self.tamaño
 
     def __iter__(self):
         actual = self.cabeza
@@ -72,7 +72,7 @@ class ListaEnlazada:
 
 class QueueCentroPokemon:
     def __init__(self):
-        self._queue = deque()
+        self._queue = []
 
     def enqueue(self, pokemon):
         self._queue.append(pokemon)
@@ -80,7 +80,7 @@ class QueueCentroPokemon:
     def dequeue(self):
         if self.esta_vacia():
             return None
-        return self._queue.popleft()
+        return self._queue.pop(0)
 
     def esta_vacia(self):
         return len(self._queue) == 0
