@@ -15,7 +15,7 @@ def insertion_sort_por_tipo(lista):
     for i in range(1, len(lista)):
         actual = lista[i]
         j = i - 1
-        while j >= 0 and lista[j].tipo_principal.lower() > actual.tipo_principal.lower():
+        while j >= 0 and lista[j].tipo_principal().lower() > actual.tipo_principal().lower():
             lista[j + 1] = lista[j]
             j -= 1
         lista[j + 1] = actual

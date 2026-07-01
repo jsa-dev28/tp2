@@ -1,6 +1,3 @@
-from collections import deque
-
-
 class Nodo:
     def __init__(self, dato):
         self.dato = dato
@@ -64,12 +61,6 @@ class LinkedList:
     def __len__(self):
         return self.tamaño
 
-    def __iter__(self):
-        actual = self.cabeza
-        while actual is not None:
-            yield actual.dato
-            actual = actual.siguiente
-
 class QueueCentroPokemon:
     def __init__(self):
         self._queue = []
@@ -109,6 +100,3 @@ class StackTransferencias:
 
     def __len__(self):
         return len(self._stack)
-
-    def __iter__(self):
-        return iter(reversed(self._stack))

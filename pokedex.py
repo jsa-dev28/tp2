@@ -41,7 +41,7 @@ class Pokedex:
         return sorted(self.registro.keys())
 
     def mostrar(self):
-        print("\n===== POKEDEX NACIONAL =====")
+        print("\n===== POKÉDEX NACIONAL =====")
         for pkm in sorted(self.registro.values(), key=lambda p: p.id):
             print(pkm)
         print(f"Total registrados: {len(self.registro)}")
@@ -64,16 +64,16 @@ class RegistroMedallas:
 
     def agregar_medalla(self, nombre_medalla: str) -> bool:
         if nombre_medalla in self.medallas:
-            print(f">> Ya posees la '{nombre_medalla}'. No se admiten duplicados.")
+            print(f">> Ya tenés la '{nombre_medalla}'. No se admiten duplicados.")
             return False
         self.medallas.add(nombre_medalla)
-        print(f">> ¡Has obtenido la {nombre_medalla}!")
+        print(f">> ¡Conseguiste la {nombre_medalla}!")
         return True
 
     def mostrar(self):
         print("\n===== MEDALLAS OBTENIDAS =====")
         if not self.medallas:
-            print("Aun no tenes medallas.")
+            print("Aun no tenés medallas.")
         for m in self.medallas:
             print(f"- {m}")
         print(f"Progreso: {len(self.medallas)}/{len(self.medallas_totales)}")
