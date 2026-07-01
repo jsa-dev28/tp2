@@ -65,7 +65,6 @@ def menu_buscar_equipo(entrenador):
     else:
         print(">> Ese Pokémon no está en tu Equipo Principal.")
 
-
 def menu_consultar_pokedex(pokedex):
     ids_ordenados = pokedex.ids_ordenados()
     entrada = input("Ingresá el ID a consultar en la Pokédex: ").strip()
@@ -169,12 +168,15 @@ def main():
         elif opcion == "10":
             entrenador.deshacer_ultima_transferencia()
         elif opcion == "11":
-            menu_gimnasios()
-            seleccion = input("Elegí el número de gimnasio a desafiar: ").strip()
-            if seleccion.isdigit():
-                entrenador.desafiar_gimnasio(int(seleccion) - 1)
+            if not entrenador.equipo_principal:
+                print("Necesitás tener como mínimo 6 Pokémon en tu equipo para desafiar a un entrenador")
             else:
-                print(">> Opción inválida.")
+                menu_gimnasios()
+                seleccion = input("Elegí el número de gimnasio a desafiar: ").strip()
+                if seleccion.isdigit():
+                    entrenador.desafiar_gimnasio(int(seleccion) - 1)
+                else:
+                    print(">> Opción inválida.")
         elif opcion == "12":
             menu_consultar_pokedex(pokedex)
         elif opcion == "0":
