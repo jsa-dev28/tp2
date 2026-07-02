@@ -25,21 +25,21 @@ class Entrenador:
     def capturar_pokemon(self, pokemon):
         if len(self.equipo_principal) < LIMITE_EQUIPO:
             self.equipo_principal.append(pokemon)
-            print(f">> {pokemon.nombre} se unió al Equipo Principal ({len(self.equipo_principal)}/{LIMITE_EQUIPO}).")
+            print(f"{pokemon.nombre} se unió al Equipo Principal ({len(self.equipo_principal)}/{LIMITE_EQUIPO}).")
         else:
             self.pc.insertar_al_final(pokemon)
-            print(f">> Equipo Principal lleno (6/6). {pokemon.nombre} fue derivado automaticamente a la PC.")
+            print(f"Equipo Principal lleno (6/6). {pokemon.nombre} fue derivado automaticamente a la PC.")
 
     def enviar_a_centro_pokemon(self, pokemon):
         if pokemon not in self.equipo_principal:
-            print(">> Ese Pokémon no está en tu Equipo Principal.")
+            print("Ese Pokémon no está en tu Equipo Principal.")
             return
         self.centro_pokemon.enqueue(pokemon)
-        print(f">> {pokemon.nombre} ingresó a la fila del Centro Pokémon.")
+        print(f"{pokemon.nombre} ingresó a la fila del Centro Pokémon.")
 
     def procesar_centro_pokemon(self):
         if self.centro_pokemon.esta_vacia():
-            print(">> No hay Pokémon esperando en el Centro Pokémon.")
+            print("No hay Pokémon esperando en el Centro Pokémon.")
             return
         print("\n===== CURANDO EQUIPO =====")
         while not self.centro_pokemon.esta_vacia():
@@ -49,31 +49,31 @@ class Entrenador:
 
     def transferir_al_profesor_oak(self, pokemon):
         if not self.pc.eliminar(pokemon):
-            print(">> Ese Pokémon no se encuentra en la PC.")
+            print("Ese Pokémon no se encuentra en la PC.")
             return
         self.pila_transferencias.push(pokemon)
-        print(f">> {pokemon.nombre} fue transferido al Profesor Oak.")
+        print(f"{pokemon.nombre} fue transferido al Profesor Oak.")
 
     def deshacer_ultima_transferencia(self):
         pokemon = self.pila_transferencias.pop()
         if pokemon is None:
-            print(">> No hay transferencias recientes para deshacer.")
+            print("No hay transferencias recientes para deshacer.")
             return
         self.pc.insertar_al_final(pokemon)
-        print(f">> Se recuperó a {pokemon.nombre} y volvió a la PC.")
+        print(f"Se recuperó a {pokemon.nombre} y volvió a la PC.")
 
     def desafiar_gimnasio(self, indice_gimnasio):
         if indice_gimnasio < 0 or indice_gimnasio >= len(GIMNASIOS):
-            print(">> Gimnasio inválido.")
+            print("Gimnasio inválido.")
             return
         gimnasio = GIMNASIOS[indice_gimnasio]
-        print(f"\n>> Desafiando a {gimnasio['líder']} en el Gimnasio de {gimnasio['nombre']}...")
+        print(f"\nDesafiando a {gimnasio['líder']} en el Gimnasio de {gimnasio['nombre']}...")
         gano = random.choice([True, False])
         if gano:
-            print(f">> ¡Derrotaste a {gimnasio['líder']}!")
+            print(f"¡Derrotaste a {gimnasio['líder']}!")
             self.medallas.agregar_medalla(gimnasio["medalla"])
         else:
-            print(f">> Fuiste derrotado por {gimnasio['líder']}. Intentá de nuevo más tarde.")
+            print(f"Fuiste derrotado por {gimnasio['líder']}. Intentá de nuevo más tarde.")
 
     def mostrar_equipo(self):
         print("\n===== EQUIPO PRINCIPAL =====")

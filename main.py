@@ -10,7 +10,7 @@ def pausar():
     input("\nPresioná ENTER para continuar...")
 
 def menu_capturar(pokedex, entrenador):
-    print("\n--- CAPTURAR NUEVO POKÉMON ---")
+    print("\nCAPTURAR NUEVO POKÉMON")
     print("Elegí un Pokémon de la Pokédex por su ID, o '0' para capturar uno al azar.")
     entrada = input("ID a capturar: ").strip()
 
@@ -18,18 +18,18 @@ def menu_capturar(pokedex, entrenador):
         pokemon_base = random.choice(pokedex.todos())
     else:
         if not entrada.isdigit():
-            print(">> ID inválido.")
+            print("ID inválido.")
             return
         pokemon_base = pokedex.obtener(int(entrada))
         if pokemon_base is None:
-            print(">> No existe ese ID en la Pokédex.")
+            print("No existe ese ID en la Pokédex.")
             return
 
     entrenador.capturar_pokemon(pokemon_base)
 
 def submenu_ordenar_pc(entrenador):
     if entrenador.pc.esta_vacia():
-        print(">> La PC está vacía, no hay nada para ordenar.")
+        print("La PC está vacía, no hay nada para ordenar.")
         return
 
     print("\n--- ORDENAR PC ---")
@@ -42,15 +42,15 @@ def submenu_ordenar_pc(entrenador):
 
     if opcion == "1":
         lista_temporal = bubble_sort_por_nombre(lista_temporal)
-        print(">> PC ordenada alfabéticamente.")
+        print("PC ordenada alfabéticamente.")
     elif opcion == "2":
         lista_temporal = insertion_sort_por_tipo(lista_temporal)
-        print(">> PC ordenada por tipo.")
+        print("PC ordenada por tipo.")
     elif opcion == "3":
         lista_temporal = quick_sort_por_poder(lista_temporal)
-        print(">> PC ordenada por poder de combate (mayor a menor).")
+        print("PC ordenada por poder de combate (mayor a menor).")
     else:
-        print(">> Opción inválida.")
+        print("Opción inválida.")
         return
 
     entrenador.pc.reconstruir_desde_lista(lista_temporal)
@@ -61,21 +61,21 @@ def menu_buscar_equipo(entrenador):
     nombre = input("Nombre del Pokémon a buscar en tu Equipo: ").strip()
     indice, pokemon = busqueda_lineal_en_equipo(entrenador.equipo_principal, nombre)
     if pokemon:
-        print(f">> Encontrado en la posición {indice + 1} del equipo! {pokemon}")
+        print(f"Encontrado en la posición {indice + 1} del equipo! {pokemon}")
     else:
-        print(">> Ese Pokémon no está en tu Equipo Principal.")
+        print("Ese Pokémon no está en tu Equipo Principal.")
 
 def menu_consultar_pokedex(pokedex):
     ids_ordenados = pokedex.ids_ordenados()
     entrada = input("Ingresá el ID a consultar en la Pokédex: ").strip()
     if not entrada.isdigit():
-        print(">> ID inválido.")
+        print("ID inválido.")
         return
     resultado = busqueda_binaria_en_pokedex(ids_ordenados, pokedex, int(entrada))
     if resultado:
-        print(f">> Encontrado: {resultado}")
+        print(f"Encontrado: {resultado}")
     else:
-        print(">> Ese ID no existe en la Pokédex Nacional.")
+        print("Ese ID no existe en la Pokédex Nacional.")
 
 
 def menu_centro_pokemon(entrenador):
@@ -94,11 +94,11 @@ def menu_centro_pokemon(entrenador):
         if pokemon:
             entrenador.enviar_a_centro_pokemon(pokemon)
         else:
-            print(">> No se encontró ese Pokémon en el equipo.")
+            print("No se encontró ese Pokémon en el equipo.")
     elif opcion == "2":
         entrenador.procesar_centro_pokemon()
     else:
-        print(">> Opción inválida.")
+        print("Opción inválida.")
 
 
 def menu_transferir_oak(entrenador):
@@ -114,7 +114,7 @@ def menu_transferir_oak(entrenador):
     if pokemon_encontrado:
         entrenador.transferir_al_profesor_oak(pokemon_encontrado)
     else:
-        print(">> No se encontró ese Pokémon en la PC.")
+        print("No se encontró ese Pokémon en la PC.")
 
 def menu_gimnasios():
     print("\n--- GIMNASIOS DISPONIBLES ---")
@@ -168,7 +168,7 @@ def main():
         elif opcion == "10":
             entrenador.deshacer_ultima_transferencia()
         elif opcion == "11":
-            if not entrenador.equipo_principal:
+            if not entrenador.equipo_principal or len(entrenador.equipo_principal) < 6:
                 print("Necesitás tener como mínimo 6 Pokémon en tu equipo para desafiar a un entrenador")
             else:
                 menu_gimnasios()
@@ -176,14 +176,14 @@ def main():
                 if seleccion.isdigit():
                     entrenador.desafiar_gimnasio(int(seleccion) - 1)
                 else:
-                    print(">> Opción inválida.")
+                    print("Opción inválida.")
         elif opcion == "12":
             menu_consultar_pokedex(pokedex)
         elif opcion == "0":
             print("\nGracias por jugar!")
             break
         else:
-            print(">> Opción inválida, intentá nuevamente.")
+            print("Opción inválida, intentá nuevamente.")
         pausar()
 
 if __name__ == "__main__":
