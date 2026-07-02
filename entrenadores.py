@@ -1,5 +1,5 @@
 import random
-from estructuras import LinkedList, QueueCentroPokemon, StackTransferencias
+from estructuras import LinkedList, Queue, Stack
 
 GIMNASIOS = [
     {"nombre": "Ciudad Plateada", "líder": "Brock", "medalla": "Medalla Roca"},
@@ -18,8 +18,8 @@ class Entrenador:
     def __init__(self, registro_medallas):
         self.equipo_principal = []
         self.pc = LinkedList()
-        self.centro_pokemon = QueueCentroPokemon()
-        self.pila_transferencias = StackTransferencias()
+        self.centro_pokemon = Queue()
+        self.stack_transferencias = Stack()
         self.medallas = registro_medallas
 
     def capturar_pokemon(self, pokemon):
@@ -41,21 +41,21 @@ class Entrenador:
         if self.centro_pokemon.esta_vacia():
             print("No hay Pokémon esperando en el Centro Pokémon.")
             return
-        print("\n===== CURANDO EQUIPO =====")
+        print("\nCURANDO EQUIPO")
         while not self.centro_pokemon.esta_vacia():
             pkm = self.centro_pokemon.dequeue()
             print(f"Curando a {pkm.nombre}... ¡Listo! {pkm.nombre} está totalmente sano.")
-        print("===== Todo el equipo en cola fue sanado =====")
+        print("Todo el equipo en cola fue sanado")
 
     def transferir_al_profesor_oak(self, pokemon):
         if not self.pc.eliminar(pokemon):
             print("Ese Pokémon no se encuentra en la PC.")
             return
-        self.pila_transferencias.push(pokemon)
+        self.stack_transferencias.push(pokemon)
         print(f"{pokemon.nombre} fue transferido al Profesor Oak.")
 
     def deshacer_ultima_transferencia(self):
-        pokemon = self.pila_transferencias.pop()
+        pokemon = self.stack_transferencias.pop()
         if pokemon is None:
             print("No hay transferencias recientes para deshacer.")
             return
@@ -76,7 +76,7 @@ class Entrenador:
             print(f"Fuiste derrotado por {gimnasio['líder']}. Intentá de nuevo más tarde.")
 
     def mostrar_equipo(self):
-        print("\n===== EQUIPO PRINCIPAL =====")
+        print("\nEQUIPO PRINCIPAL")
         if not self.equipo_principal:
             print("No tenés Pokémon en tu equipo.")
             return
@@ -84,7 +84,7 @@ class Entrenador:
             print(f"{i}. {pkm}")
 
     def mostrar_pc(self):
-        print("\n===== PC =====")
+        print("\nPC")
         if self.pc.esta_vacia():
             print("La PC está vacía.")
         for i, pkm in enumerate(self.pc.convertir_lista_python(), start=1):

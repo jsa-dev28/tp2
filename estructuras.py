@@ -61,7 +61,7 @@ class LinkedList:
     def __len__(self):
         return self.tamaño
 
-class QueueCentroPokemon:
+class Queue:
     def __init__(self):
         self._queue = []
 
@@ -78,8 +78,11 @@ class QueueCentroPokemon:
 
     def __len__(self):
         return len(self._queue)
+    
+    def convertir_lista_python(self):
+        return list(self._queue)
 
-class StackTransferencias:
+class Stack:
     LIMITE = 5
 
     def __init__(self):

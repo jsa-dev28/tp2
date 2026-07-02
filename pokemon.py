@@ -10,10 +10,10 @@ class Pokemon:
         self.velocidad = velocidad
         self.poder_combate = hp + ataque + defensa + velocidad
         
-    def tipo_principal(self) -> str:
+    def tipo_principal(self):
         return self.tipo[0] if self.tipo else "Desconocido"
 
-    def tipo_str(self) -> str:
+    def tipo_str(self):
         return "/".join(self.tipo)
 
     def __repr__(self):

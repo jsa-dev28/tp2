@@ -1,4 +1,4 @@
-def bubble_sort_por_nombre(lista):
+def bubble_sort(lista):
     n = len(lista)
     for i in range(n - 1):
         intercambio = False
@@ -11,7 +11,7 @@ def bubble_sort_por_nombre(lista):
     return lista
 
 
-def insertion_sort_por_tipo(lista):
+def insertion_sort(lista):
     for i in range(1, len(lista)):
         actual = lista[i]
         j = i - 1
@@ -22,7 +22,7 @@ def insertion_sort_por_tipo(lista):
     return lista
 
 
-def quick_sort_por_poder(lista):
+def quick_sort(lista):
     if len(lista) <= 1:
         return lista
 
@@ -31,4 +31,4 @@ def quick_sort_por_poder(lista):
     iguales = [p for p in lista if p.poder_combate == pivote.poder_combate]
     menores = [p for p in lista if p.poder_combate < pivote.poder_combate]
 
-    return quick_sort_por_poder(mayores) + iguales + quick_sort_por_poder(menores)
+    return quick_sort(mayores) + iguales + quick_sort(menores)
