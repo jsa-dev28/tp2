@@ -68,8 +68,8 @@ class Entrenador:
             return
         gimnasio = GIMNASIOS[indice_gimnasio]
         print(f"\nDesafiando a {gimnasio['líder']} en el Gimnasio de {gimnasio['nombre']}...")
-        gano = random.choice([True, False])
-        if gano:
+        victoria = random.choice([True, False])
+        if victoria:
             print(f"¡Derrotaste a {gimnasio['líder']}!")
             self.medallas.agregar_medalla(gimnasio["medalla"])
         else:
